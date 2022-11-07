@@ -1,10 +1,19 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
 import { AuthContext } from '../../../contexts/AuthProvider';
 import './Header.css'
 const Header = () => {
-    const {user,logOut} = useContext(AuthContext)
+    const {user,logOut} = useContext(AuthContext);
+    const handlelogOut = () =>{
+        logOut()
+        .then(result =>{
+            toast.success('Sign Out Successfully')
+        }).catch(err =>{
+            
+        })
+    }
     return (
         <div className="navbar bg-base-100 px-28 py-7">
             <div className="navbar-start">
@@ -32,7 +41,7 @@ const Header = () => {
             <div className="navbar-end">
                 {
                     user && user.uid ?
-                    <button onClick={logOut} className='btn'>Sign Out</button>
+                    <button onClick={handlelogOut} className='btn'>Sign Out</button>
                     :
                     <>
                         <Link to='/login'  className='mr-5 text-[#0F1B4C] font-semibold'>Login</Link>

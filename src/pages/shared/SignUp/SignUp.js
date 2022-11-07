@@ -18,6 +18,7 @@ const SignUp = () => {
         }
         SignUpEmail(email,password)
         .then(result =>{
+            toast.success('Sign Up Successfully')
             updateUserProfile(name)
             .then(() => {
                 console.log('name')
