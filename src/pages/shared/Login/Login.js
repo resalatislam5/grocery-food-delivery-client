@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { FaFacebook,FaGoogle } from "react-icons/fa";
 import { AuthContext } from '../../../contexts/AuthProvider';
 const Login = () => {
-    const {} = useContext(AuthContext)
+    // const {} = useContext(AuthContext)
     return (
         <div className='min-h-[50vh]'>
             <div className=' w-96 border mx-auto h-96 mt-[5%] p-5'>
