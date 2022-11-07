@@ -1,0 +1,12 @@
+ .card-style:hover::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    margin-left: 13px;
+    width: 306px;
+    height: 277px;
+    background-color: #F86061;
+    transform: rotate(-6deg);
+    z-index: 1;
+    border-radius: 20px;
+}
