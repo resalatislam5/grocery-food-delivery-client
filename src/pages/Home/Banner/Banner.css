@@ -1,0 +1,8 @@
+.Order-btn{
+    background: linear-gradient(120deg,#F606DE,#F86061);
+    border: 0px solid;
+}
+.Order-progress{
+    background: linear-gradient(300deg,#F86061,#F606DE);
+    border: 0px solid;
+}
