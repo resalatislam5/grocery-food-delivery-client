@@ -3,7 +3,7 @@ import image from '../../../assets/home-delivery.png'
 const Delivery = () => {
     return (
         <div className='px-28 pt-12 pb-28'>
-            <div className="grid grid-cols-2 gap-4 justify-center">
+            <div className="grid grid-cols-2 gap-4 justify-items-center">
                 <div className="mt-80">
                     <p className="text-[#F9BA45]">HOME DELIVERY</p>
                     <h2 className="text-[#2E2E2E] font-bold text-4xl my-5">Sit at Home We Will Take <br /> Care Your Order</h2>
