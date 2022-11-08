@@ -1,9 +1,16 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { FaFacebook,FaGoogle } from "react-icons/fa";
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 const Login = () => {
+    const GoogleProvider = new GoogleAuthProvider()
     const {LoginEmail,handleGoogleLogin} = useContext(AuthContext)
+    //navigate
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || "/";
     const handleLogin = e =>{
         e.preventDefault()
         const form = e.target;
@@ -13,11 +20,22 @@ const Login = () => {
         LoginEmail(email,password)
         .then(result =>{
             toast.success('Login Successfully')
+            navigate(from, { replace: true });
 
         }).catch(error =>{
             const message = error.message;
             return toast.error(message)
         })
+    }
+    const handleGoogleSignIn = () =>{
+        handleGoogleLogin(GoogleProvider)
+        .then((result) => {
+            toast.success('Login successfully')
+            navigate(from, { replace: true });
+          }).catch((error) => {
+            const errorMessage = error.message;
+            toast.error(errorMessage)
+          });
     }
     return (
         <div className='min-h-[50vh]'>
@@ -30,7 +48,7 @@ const Login = () => {
                     <input className='border p-3 btn' type="submit" value="Login" />
                 </form>
                 <div className='flex justify-center mt-5 gap-5 text-3xl text-[#f75353]'>
-                    <button onClick={handleGoogleLogin} className='cursor-pointer'><FaGoogle /></button>
+                    <button onClick={handleGoogleSignIn} className='cursor-pointer'><FaGoogle /></button>
                     <button className='cursor-pointer'><FaFacebook /></button>
                 </div>
             </div>

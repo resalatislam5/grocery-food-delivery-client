@@ -1,10 +1,17 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, } from 'react';
 import toast from 'react-hot-toast';
 import { FaFacebook,FaGoogle } from "react-icons/fa";
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const SignUp = () => {
     const {SignUpEmail,updateName,handleGoogleLogin} = useContext(AuthContext)
+    const GoogleProvider = new GoogleAuthProvider()
+    //navigate
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || "/";
     const handleSignUp = e =>{
         e.preventDefault()
         const form = e.target;
@@ -24,7 +31,7 @@ const SignUp = () => {
             //update name
             updateName(name)
             .then(() => {
-
+                navigate(from, { replace: true });
               }).catch((error) => {
                 console.log(error)
               });
@@ -33,6 +40,16 @@ const SignUp = () => {
             const message = error.message;
             return toast.error(message)
         })
+    }
+    const handleGoogleSignIn = () =>{
+        handleGoogleLogin(GoogleProvider)
+        .then((result) => {
+            toast.success('Login successfully')
+            navigate(from, { replace: true });
+          }).catch((error) => {
+            const errorMessage = error.message;
+            toast.error(errorMessage)
+          });
     }
     return (
         <div className='min-h-[50vh] mb-[2%]'>
@@ -46,7 +63,7 @@ const SignUp = () => {
                     <input className='border p-3 btn' type="submit" value="Register" />
                 </form>
                 <div className='flex justify-center mt-5 gap-5 text-3xl text-[#f75353]'>
-                    <button onClick={handleGoogleLogin} className='cursor-pointer'><FaGoogle /></button>
+                    <button onClick={handleGoogleSignIn} className='cursor-pointer'><FaGoogle /></button>
                     <button className='cursor-pointer'><FaFacebook /></button>
                 </div>
             </div>

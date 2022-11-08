@@ -26,12 +26,14 @@ const MyReviews = () => {
         })
         .then(res =>res.json())
         .then(data => {
-            console.log(data)
-            if(data.acknowledged){
-                const newReview = reviews.filter(review => review._id !== id)
-                console.log(newReview, id)
-                setReviews(newReview)
-                toast.success('Delete successfully')
+            const confirm = window.confirm();
+            if(confirm){
+                if(data.acknowledged){
+                    const newReview = reviews.filter(review => review._id !== id)
+                    console.log(newReview, id)
+                    setReviews(newReview)
+                    toast.success('Delete successfully')
+                }
             }
         })
     }
