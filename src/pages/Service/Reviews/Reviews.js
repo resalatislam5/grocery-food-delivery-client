@@ -15,7 +15,6 @@ const Reviews = ({id}) => {
     if(loading){
         return <button className="btn btn-square loading"></button>
     }
-    const {email,displayName} = user;
     const handleClick = event => {
         setIsShown(current => !current);
       };
@@ -25,8 +24,8 @@ const Reviews = ({id}) => {
         const userReview = {
             reviewId:id,
             review:review,
-            displayName:displayName,
-            email
+            displayName:user.displayName,
+            email: user.email
         }
         fetch('http://localhost:5000/reviews',{
             method:'POST',

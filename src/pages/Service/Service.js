@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 import Reviews from './Reviews/Reviews';
 
 const Service = () => {
     const product = useLoaderData();
-    const {strMealThumb,strMeal,strInstructions,_id} = product[0];
+    const {strMealThumb,strMeal,strInstructions,_id,price} = product[0];
+    const {user} = useContext(AuthContext)
     const handleAdd = () =>{
         fetch('http://localhost:5000/addservices',{
             method:'POST',
@@ -27,8 +29,14 @@ const Service = () => {
                 <div className="card-body">
                     <h2 className="card-title">{strMeal}</h2>
                     <p>{strInstructions}</p>
-                    <div className="card-actions justify-end">
-                    <button onClick={handleAdd} className="btn btn-primary">Buy Now</button>
+                    <div className="card-actions justify-between">
+                    <p className='font-bold text-2xl'>Price : <span className='text-[#F86061]'>{price} taka</span></p>
+                    {
+                        user && user.email ?
+                        <button onClick={handleAdd} className="btn btn-primary">Buy Now</button>
+                        :
+                        <p className='text-2xl font-bold'> If you bye new <Link className='underline text-end mb-5 text-[#F86061]' to='/login'>Please Login</Link></p>
+                    }
                     </div>
                 </div>
             </div>

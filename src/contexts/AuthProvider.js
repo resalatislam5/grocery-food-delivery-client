@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 const auth = getAuth(app)
 export const AuthContext = createContext()
 const AuthProvider = ({children}) => {
-    const [user,SetUser] = useState()
+    const [user,SetUser] = useState(null)
     const [loading,setLoading] = useState(true);
     //signUp
     const SignUpEmail = (email,password) =>{
