@@ -4,7 +4,7 @@ import { FaFacebook,FaGoogle } from "react-icons/fa";
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const SignUp = () => {
-    const {SignUpEmail,updateUserProfile} = useContext(AuthContext)
+    const {SignUpEmail,updateName,handleGoogleLogin} = useContext(AuthContext)
     const handleSignUp = e =>{
         e.preventDefault()
         const form = e.target;
@@ -13,16 +13,18 @@ const SignUp = () => {
         const password = form.password.value;
         const confirm = form.confirm.value;
         console.log(name,password,confirm,email)
+        //password check
         if(password !== confirm){
             return toast.error('password not match')
         }
+        //signup
         SignUpEmail(email,password)
         .then(result =>{
-            toast.success('Sign Up Successfully')
-            updateUserProfile(name)
+            toast.success('Sign Up Successfully');
+            //update name
+            updateName(name)
             .then(() => {
-                console.log('name')
-             toast.success('Success')
+
               }).catch((error) => {
                 console.log(error)
               });
@@ -44,7 +46,7 @@ const SignUp = () => {
                     <input className='border p-3 btn' type="submit" value="Register" />
                 </form>
                 <div className='flex justify-center mt-5 gap-5 text-3xl text-[#f75353]'>
-                    <button className='cursor-pointer'><FaGoogle /></button>
+                    <button onClick={handleGoogleLogin} className='cursor-pointer'><FaGoogle /></button>
                     <button className='cursor-pointer'><FaFacebook /></button>
                 </div>
             </div>

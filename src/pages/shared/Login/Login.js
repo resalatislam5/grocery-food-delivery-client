@@ -3,13 +3,13 @@ import toast from 'react-hot-toast';
 import { FaFacebook,FaGoogle } from "react-icons/fa";
 import { AuthContext } from '../../../contexts/AuthProvider';
 const Login = () => {
-    const {LoginEmail} = useContext(AuthContext)
+    const {LoginEmail,handleGoogleLogin} = useContext(AuthContext)
     const handleLogin = e =>{
         e.preventDefault()
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(password,email)
+        //login
         LoginEmail(email,password)
         .then(result =>{
             toast.success('Login Successfully')
@@ -30,7 +30,7 @@ const Login = () => {
                     <input className='border p-3 btn' type="submit" value="Login" />
                 </form>
                 <div className='flex justify-center mt-5 gap-5 text-3xl text-[#f75353]'>
-                    <button className='cursor-pointer'><FaGoogle /></button>
+                    <button onClick={handleGoogleLogin} className='cursor-pointer'><FaGoogle /></button>
                     <button className='cursor-pointer'><FaFacebook /></button>
                 </div>
             </div>
