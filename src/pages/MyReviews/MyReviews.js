@@ -19,6 +19,7 @@ const MyReviews = () => {
         console.log('user')
          return <button className="btn btn-square loading"></button>
     }
+    //handle delete
     const handleDelete = id =>{
         fetch(`http://localhost:5000/reviewdelete/${id}`,{
             method:'DELETE',
@@ -37,8 +38,24 @@ const MyReviews = () => {
             }
         })
     }
-    // const ids = reviews.filter(reviews._id)
-    // console.log(ids)
+    //handle update
+    const handleUpdate = id =>{
+        const data = {name:'o'};
+        fetch(`http://localhost:5000/reviewupdate/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(),
+            })
+            .then((response) => response.json(data))
+            .then((data) => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
     return (
         <div>
             
@@ -54,14 +71,14 @@ const MyReviews = () => {
                 </div>
                 <div>
                     <button onClick={()=>handleDelete(reviews._id)} className='btn m-5'>Delete</button>
-                    <button className='btn m-5'>Edit</button>
+                    <button onClick={()=>handleUpdate(reviews._id)}  className='btn m-5'>Edit</button>
                 </div>
             </div>
                 )
             }
         </div>
         :
-        <h1>No Review Found</h1>
+        <h1>No reviews were added</h1>
         }
         </div>
     );
