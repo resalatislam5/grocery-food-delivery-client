@@ -9,7 +9,6 @@ const HomeProducts = () => {
         .then(res => res.json())
         .then(data => setProducts(data))
     },[])
-    console.log(products)
     return (
         <div className='mx-28 mt-48'>
             <div className='grid grid-cols-3 gap-5'>
@@ -21,7 +20,7 @@ const HomeProducts = () => {
                             <h3 className='text-[#2E2E2E] text-xl font-semibold block mt-2'>{product.strMeal}</h3>
                             <p className="text-[#676767] mt-4">{product.strInstructions.length <100 ?product.strInstructions : product.strInstructions.slice(0,100)+'...'}</p>
                             <div className='flex justify-end p-2 text-2xl text-[#F86061]'>
-                                <Link to={`/service/:${product._id}`}><FaArrowRight /></Link>
+                                <Link to={`/service/${product._id}`}><FaArrowRight /></Link>
                             </div>
                         </div>
                     </div>

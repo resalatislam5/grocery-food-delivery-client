@@ -23,7 +23,7 @@ const Header = () => {
                 </label>
                 <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                     <li><Link className='hover:text-[#F55253] font-semibold' to='/' >Home</Link></li>
-                    <li><Link className='hover:text-[#F55253] font-semibold' to='/services' >Service</Link></li>
+                    <li><Link className='hover:text-[#F55253] font-semibold' to='/services' >Services</Link></li>
                     <li><Link className='hover:text-[#F55253] font-semibold' to='/shop' >Shop</Link></li>
                     <li><Link className='hover:text-[#F55253] font-semibold' to='/blog' >blog</Link></li>
                 </ul>
@@ -33,7 +33,7 @@ const Header = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                 <li><Link className='hover:text-[#F55253] font-semibold' to='/' >Home</Link></li>
-                <li><Link className='hover:text-[#F55253] font-semibold' to='/services' >Service</Link></li>
+                <li><Link className='hover:text-[#F55253] font-semibold' to='/services' >Services</Link></li>
                 <li><Link className='hover:text-[#F55253] font-semibold' to='/shop' >Shop</Link></li>
                 <li><Link className='hover:text-[#F55253] font-semibold' to='/blog' >blog</Link></li>
                 </ul>
