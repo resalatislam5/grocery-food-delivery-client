@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import banner from '../../../assets/banner.png'
 import stroberi from '../../../assets/stroberi.png'
 import './Banner.css'
@@ -12,7 +13,7 @@ const Banner = () => {
                 <p className="text-[#676767]">Grocen atssures fresh grocery every morning to your <br /> family without getting out in this pandemic.</p>
             </div>
             <div className="mt-10 flex gap-5">
-                <button className="btn Order-btn">Order Now</button>
+                <Link to='/services' className="btn Order-btn">Order Now</Link>
                 <button className="btn Order-progress">Order Process</button>
             </div>
            </div>
