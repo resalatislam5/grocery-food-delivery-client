@@ -36,6 +36,10 @@ const Header = () => {
                 <li><Link className='hover:text-[#F55253] font-semibold' to='/services' >Services</Link></li>
                 <li><Link className='hover:text-[#F55253] font-semibold' to='/shop' >Shop</Link></li>
                 <li><Link className='hover:text-[#F55253] font-semibold' to='/blog' >blog</Link></li>
+                {
+                    user &&
+                    <li><Link className='hover:text-[#F55253] font-semibold' to='/reviews' >My reviews</Link></li>
+                }
                 </ul>
             </div>
             <div className="navbar-end">
