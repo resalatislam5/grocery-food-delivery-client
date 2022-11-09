@@ -11,8 +11,11 @@ const Service = () => {
     const {user} = useContext(AuthContext)
     // title
     useTitle('Services')
+
     const handleAdd = () =>{
-        fetch('https://gorcery-food-delivery-server.vercel.app/addservices',{
+        product[0].email = user?.email;
+        console.log(product[0])
+        fetch('http://localhost:5000/addservices',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json',

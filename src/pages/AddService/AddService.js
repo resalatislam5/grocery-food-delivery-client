@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 
 const AddService = () => {
-    const services = useLoaderData()
+    const [services,setServices] = useState([])
+    const {user} = useContext(AuthContext)
+    useEffect(()=>{
+        fetch(`http://localhost:5000/addservices?email=${user?.email}`,{
+            headers:{
+                authorization:`Bearer ${localStorage.getItem('grocery-token')}`
+            }
+        })
+        .then(res =>{
+        //    if(res.status === 401 || res.status === 403){
+        //     logOut()
+        //    }
+           return res.json()
+        })
+        .then(data => setServices(data))
+    },[])
     // title
     useTitle('Orders')
     return (
