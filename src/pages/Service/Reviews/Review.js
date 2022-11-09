@@ -6,7 +6,7 @@ const Review = ({reviews}) => {
         <div>
             <div className="card  bg-base-100 shadow-xl my-5 flex items-center flex-row px-5">
             <div>
-                <img className="mask mask-decagon w-16" src={photoURL} />
+                <img className="mask mask-decagon w-16" src={photoURL} alt=""/>
             </div>
                 <div className="card-body">
                     <h2 className="card-title">{displayName}</h2>

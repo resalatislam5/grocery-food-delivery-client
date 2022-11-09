@@ -11,7 +11,7 @@ const Reviews = ({id}) => {
         fetch(`http://localhost:5000/reviews/${id}`)
         .then(res => res.json())
         .then(data => setReviews(data))
-    }, [setReviews])
+    }, [id])
     if(loading){
         return <button className="btn btn-square loading"></button>
     }
