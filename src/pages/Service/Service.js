@@ -15,7 +15,7 @@ const Service = () => {
     const handleAdd = () =>{
         product[0].email = user?.email;
         console.log(product[0])
-        fetch('http://localhost:5000/addservices',{
+        fetch('https://gorcery-food-delivery-server-resalatislam5.vercel.app/addservices',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json',

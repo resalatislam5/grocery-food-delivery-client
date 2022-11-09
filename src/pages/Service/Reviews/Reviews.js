@@ -7,6 +7,9 @@ const Reviews = ({id}) => {
     const [isShown, setIsShown] = useState(false);
     const [reviews,setReviews] = useState([])
     const {user,loading} = useContext(AuthContext)
+    const current = new Date();
+  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+
     useEffect(() => {
         fetch(`https://gorcery-food-delivery-server.vercel.app/reviews/${id}`)
         .then(res => res.json())
@@ -56,6 +59,7 @@ const Reviews = ({id}) => {
                 <form onSubmit={handleReview}  className='flex items-end flex-col mt-6'>
                     <textarea className="textarea textarea-success w-96" name="review" placeholder="Type your review"></textarea>
                     <input className='border px-6 py-3 rounded-lg mt-3' type="submit" value="Review" />
+                    <h1>Current date is {date}</h1>
                 </form>
                 :
                 <>

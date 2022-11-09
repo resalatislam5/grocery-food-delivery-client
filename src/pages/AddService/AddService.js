@@ -6,21 +6,21 @@ import useTitle from '../../hooks/useTitle';
 
 const AddService = () => {
     const [services,setServices] = useState([])
-    const {user} = useContext(AuthContext)
+    const {user,logOut} = useContext(AuthContext)
     useEffect(()=>{
-        fetch(`http://localhost:5000/addservices?email=${user?.email}`,{
+        fetch(`https://gorcery-food-delivery-server-resalatislam5.vercel.app/addservices?email=${user?.email}`,{
             headers:{
                 authorization:`Bearer ${localStorage.getItem('grocery-token')}`
             }
         })
         .then(res =>{
-        //    if(res.status === 401 || res.status === 403){
-        //     logOut()
-        //    }
+           if(res.status === 401 || res.status === 403){
+            logOut()
+           }
            return res.json()
         })
         .then(data => setServices(data))
-    },[])
+    },[user])
     // title
     useTitle('Orders')
     return (

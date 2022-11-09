@@ -38,7 +38,7 @@ const SignUp = () => {
                 email: user.email
             }
                 //jwt token
-            fetch('http://localhost:5000/jwt',{
+            fetch('https://gorcery-food-delivery-server-resalatislam5.vercel.app/jwt',{
                 method: 'POST',
                 headers:{
                     'content-type':'application/json'
@@ -70,7 +70,7 @@ const SignUp = () => {
                 email: user.email
             }
             //jwt token
-            fetch('http://localhost:5000/jwt',{
+            fetch('https://gorcery-food-delivery-server-resalatislam5.vercel.app/jwt',{
                 method: 'POST',
                 headers:{
                     'content-type':'application/json'

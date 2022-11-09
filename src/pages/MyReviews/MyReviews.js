@@ -11,7 +11,7 @@ const MyReviews = () => {
     // title
     useTitle('My-Review')
     useEffect(()=>{
-        fetch(`http://localhost:5000/myreviews?email=${user?.email}`,{
+        fetch(`https://gorcery-food-delivery-server-resalatislam5.vercel.app/myreviews?email=${user?.email}`,{
             headers:{
                 authorization:`Bearer ${localStorage.getItem('grocery-token')}`
             }
@@ -52,7 +52,7 @@ const MyReviews = () => {
         const updated = {
             update:update,
         }
-        fetch(`http://localhost:5000/reviewupdate/${id}`, {
+        fetch(`https://gorcery-food-delivery-server-resalatislam5.vercel.app/reviewupdate/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
