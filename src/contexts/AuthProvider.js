@@ -34,14 +34,6 @@ const AuthProvider = ({children}) => {
     const handleGoogleLogin = (GoogleProvider) =>{
         setLoading(true)
         return signInWithPopup(auth, GoogleProvider)
-        .then((result) => {
-            toast.success('Login successfully')
-            const user = result.user;
-            console.log(user)
-          }).catch((error) => {
-            const errorMessage = error.message;
-            toast.error(errorMessage)
-          });
     }
     useEffect(()=>{
         const unSubscribe = onAuthStateChanged(auth, currentUser =>{

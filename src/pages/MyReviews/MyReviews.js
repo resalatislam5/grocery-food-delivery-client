@@ -5,6 +5,8 @@ import useTitle from '../../hooks/useTitle';
 
 const MyReviews = () => {
     const [reviews,setReviews] = useState([])
+    const [update,setUpdate] = useState()
+    const [handleid,Sethandleid] = useState()
     const {user,logOut} = useContext(AuthContext);
     // title
     useTitle('My-Review')
@@ -16,14 +18,12 @@ const MyReviews = () => {
         })
         .then(res =>{
            if(res.status === 401 || res.status === 403){
-            console.log('User decoded')
             logOut()
            }
            return res.json()
         })
         .then(data => setReviews(data))
     },[])
-    
     //handle delete
     const handleDelete = id =>{
         fetch(`https://gorcery-food-delivery-server.vercel.app/reviewdelete/${id}`,{
@@ -36,26 +36,40 @@ const MyReviews = () => {
             if(confirm){
                 if(data.acknowledged){
                     const newReview = reviews.filter(review => review._id !== id)
-                    console.log(newReview, id)
                     setReviews(newReview)
                     toast.success('Delete successfully')
                 }
             }
         })
     }
+    const handleUpdatetext = e =>{
+        const text = e.target.value
+        setUpdate(text)
+    }
     //handle update
-    const handleUpdate = id =>{
-        const data = {name:'o'};
-        fetch(`https://gorcery-food-delivery-server.vercel.app/reviewupdate/${id}`, {
+    const handleUpdate = (id) =>{
+        console.log(id)
+        const updated = {
+            update:update,
+        }
+        fetch(`http://localhost:5000/reviewupdate/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(),
+            body: JSON.stringify(updated),
             })
-            .then((response) => response.json(data))
+            .then((response) => response.json())
             .then((data) => {
-                console.log('Success:', data);
+                if(data.acknowledged){
+                    const allReview = reviews.filter(review => review._id !== id);
+                    const newReview = reviews.find(review => review._id === id)
+                    // const newReview = [...reviews,updated];
+                    newReview.review = update;
+                     const  Updatereview = [...allReview, newReview]
+                    setReviews(Updatereview)
+                    toast.success('Update successfully')
+                }
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -68,7 +82,7 @@ const MyReviews = () => {
             <div className='grid grid-cols-3 gap-5'>
             {
                 reviews.map(reviews=>
-                    <div className="card  bg-base-100 shadow-xl my-5">
+                    <div key={reviews._id} className="card  bg-base-100 shadow-xl my-5">
                 <div className="card-body">
                     <h2 className="card-title">{reviews?.displayName}</h2>
                     <span>{reviews?.email}</span>
@@ -76,8 +90,19 @@ const MyReviews = () => {
                 </div>
                 <div>
                     <button onClick={()=>handleDelete(reviews._id)} className='btn m-5'>Delete</button>
-                    <button onClick={()=>handleUpdate(reviews._id)}  className='btn m-5'>Edit</button>
+                    <label  htmlFor="my-modal" onClick={()=>Sethandleid(reviews._id)} className="btn m-5">Edit</label>
                 </div>
+                    <input type="checkbox" id="my-modal" className="modal-toggle" />
+                    <div className="modal">
+                    <div className="modal-box">
+                        <form>
+                        <textarea onBlur={handleUpdatetext} className="textarea textarea-primary w-full" name='textarea' placeholder="Update review"></textarea>
+                        </form>
+                        <div className="modal-action">
+                        <label type='submit' htmlFor="my-modal" onClick={()=>handleUpdate(handleid)} className="btn">Update</label>
+                        </div>
+                    </div>
+                    </div>
             </div>
                 )
             }

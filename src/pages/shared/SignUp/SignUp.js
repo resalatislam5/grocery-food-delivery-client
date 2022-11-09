@@ -30,11 +30,10 @@ const SignUp = () => {
         //signup
         SignUpEmail(email,password)
         .then(result =>{
-            toast.success('Sign Up Successfully');
+            const user = result.user;
             //update name
             updateName(name)
             .then(() => {
-                const user = result.user;
             const currentUser ={
                 email: user.email
             }
@@ -50,8 +49,9 @@ const SignUp = () => {
             .then(data => {
                 console.log(data.token);
                 localStorage.setItem('grocery-token', data.token)
-            })
+                toast.success('Sign Up Successfully');
                 navigate(from, { replace: true });
+            })
               }).catch((error) => {
                 console.log(error)
               });
@@ -61,6 +61,7 @@ const SignUp = () => {
             return toast.error(message)
         })
     }
+    
     const handleGoogleSignIn = () =>{
         handleGoogleLogin(GoogleProvider)
         .then((result) => {

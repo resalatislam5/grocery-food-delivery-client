@@ -66,10 +66,9 @@ const Login = () => {
             .then(data => {
                 console.log(data.token);
                 localStorage.setItem('grocery-token', data.token)
+                toast.success('Login successfully')
+                navigate(from, { replace: true });
             })
-            toast.success('Login successfully')
-
-            navigate(from, { replace: true });
           }).catch((error) => {
             const errorMessage = error.message;
             toast.error(errorMessage)
