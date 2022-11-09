@@ -50,7 +50,25 @@ const Login = () => {
     const handleGoogleSignIn = () =>{
         handleGoogleLogin(GoogleProvider)
         .then((result) => {
+            const user = result.user;
+            const currentUser ={
+                email: user.email
+            }
+            //jwt token
+            fetch('http://localhost:5000/jwt',{
+                method: 'POST',
+                headers:{
+                    'content-type':'application/json'
+                },
+                body:JSON.stringify(currentUser)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.token);
+                localStorage.setItem('grocery-token', data.token)
+            })
             toast.success('Login successfully')
+
             navigate(from, { replace: true });
           }).catch((error) => {
             const errorMessage = error.message;
