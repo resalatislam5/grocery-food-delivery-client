@@ -8,7 +8,7 @@ const Reviews = ({id}) => {
     const [reviews,setReviews] = useState([])
     const {user,loading} = useContext(AuthContext)
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/${id}`)
+        fetch(`https://gorcery-food-delivery-server.vercel.app/reviews/${id}`)
         .then(res => res.json())
         .then(data => setReviews(data))
     }, [id])
@@ -27,7 +27,7 @@ const Reviews = ({id}) => {
             displayName:user.displayName,
             email: user.email
         }
-        fetch('http://localhost:5000/reviews',{
+        fetch('https://gorcery-food-delivery-server.vercel.app/reviews',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json',

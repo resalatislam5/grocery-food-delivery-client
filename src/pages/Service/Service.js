@@ -12,7 +12,7 @@ const Service = () => {
     // title
     useTitle('Services')
     const handleAdd = () =>{
-        fetch('http://localhost:5000/addservices',{
+        fetch('https://gorcery-food-delivery-server.vercel.app/addservices',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json',

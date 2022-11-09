@@ -27,6 +27,7 @@ const AuthProvider = ({children}) => {
     }
     //SignOut
     const logOut = () =>{
+        localStorage.removeItem('grocery-token')
         return signOut(auth)
     }
     //google login

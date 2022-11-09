@@ -5,26 +5,28 @@ import useTitle from '../../hooks/useTitle';
 
 const MyReviews = () => {
     const [reviews,setReviews] = useState([])
-    const {user,loading} = useContext(AuthContext);
+    const {user,logOut} = useContext(AuthContext);
     // title
     useTitle('My-Review')
     useEffect(()=>{
-        fetch(`http://localhost:5000/myreviews?email=${user?.email}`)
-        .then(res =>res.json())
+        fetch(`http://localhost:5000/myreviews?email=${user?.email}`,{
+            headers:{
+                authorization:`Bearer ${localStorage.getItem('grocery-token')}`
+            }
+        })
+        .then(res =>{
+           if(res.status === 401 || res.status === 403){
+            console.log('User decoded')
+            logOut()
+           }
+           return res.json()
+        })
         .then(data => setReviews(data))
-    },[user])
+    },[])
     
-    if(loading){
-        console.log('loa')
-         return <button className="btn btn-square loading"></button>
-    }
-    if(!user){
-        console.log('user')
-         return <button className="btn btn-square loading"></button>
-    }
     //handle delete
     const handleDelete = id =>{
-        fetch(`http://localhost:5000/reviewdelete/${id}`,{
+        fetch(`https://gorcery-food-delivery-server.vercel.app/reviewdelete/${id}`,{
             method:'DELETE',
             
         })
@@ -44,7 +46,7 @@ const MyReviews = () => {
     //handle update
     const handleUpdate = id =>{
         const data = {name:'o'};
-        fetch(`http://localhost:5000/reviewupdate/${id}`, {
+        fetch(`https://gorcery-food-delivery-server.vercel.app/reviewupdate/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

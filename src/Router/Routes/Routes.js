@@ -29,12 +29,12 @@ export const routes = createBrowserRouter([
             },
             {
                 path:'/services',
-                loader:()=> fetch('http://localhost:5000/services'),
+                loader:()=> fetch('https://gorcery-food-delivery-server.vercel.app/services'),
                 element: <Services />
             },
             {
                 path:'/service/:id',
-                loader:({params})=> fetch(`http://localhost:5000/service/${params.id}`),
+                loader:({params})=> fetch(`https://gorcery-food-delivery-server.vercel.app/service/${params.id}`),
                 element: <Service />
             },
             {
@@ -47,7 +47,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path:'/addservice',
-                loader: () => fetch('http://localhost:5000/addservices'),
+                loader: () => fetch('https://gorcery-food-delivery-server.vercel.app/addservices'),
                 element: <PrivateRoutes><AddService /></PrivateRoutes>
             },
 
