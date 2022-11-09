@@ -1,9 +1,12 @@
 import React from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const AddService = () => {
     const services = useLoaderData()
+    // title
+    useTitle('Orders')
     return (
         <div className='mx-28 my-16'>
             <div className='grid grid-cols-3 gap-5'>

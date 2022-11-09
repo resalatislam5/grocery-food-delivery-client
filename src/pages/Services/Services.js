@@ -1,9 +1,12 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import ServicesCard from './ServicesCard';
 
 const Services = () => {
     const products = useLoaderData()
+    // title
+    useTitle('Services')
     return (
         <div className='mx-28'>
             <h2 className='my-5 text-center text-3xl font-bold'>Total Meal Found: <span className='text-[#F86061]'>{products.length}</span></h2>

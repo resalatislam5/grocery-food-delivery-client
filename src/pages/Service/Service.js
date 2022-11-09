@@ -2,12 +2,15 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 import Reviews from './Reviews/Reviews';
 
 const Service = () => {
     const product = useLoaderData();
     const {strMealThumb,strMeal,strInstructions,_id,price} = product[0];
     const {user} = useContext(AuthContext)
+    // title
+    useTitle('Services')
     const handleAdd = () =>{
         fetch('http://localhost:5000/addservices',{
             method:'POST',
