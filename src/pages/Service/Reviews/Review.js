@@ -13,8 +13,8 @@ const Review = ({reviews}) => {
                     <h2 className="card-title">{displayName}</h2>
                     <span className="">Date: {date}</span>
                     <span className="">Time: {time} {ampm}</span>
-                    <span>{email}</span>
-                    <p className='text-xl'>Your review{review}</p>
+                    <span>Email: {email}</span>
+                    <p className='text-xl'>Review: {review}</p>
                 </div>
             </div>
         </div>

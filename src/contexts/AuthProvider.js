@@ -1,7 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.init';
 import { getAuth, createUserWithEmailAndPassword, updateProfile, onAuthStateChanged, signOut, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import toast from 'react-hot-toast';
 
 const auth = getAuth(app)
 export const AuthContext = createContext()

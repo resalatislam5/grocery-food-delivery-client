@@ -88,8 +88,8 @@ const MyReviews = () => {
                     <h2 className="card-title">{reviews?.displayName}</h2>
                     <span className="">Date: {reviews.date}</span>
                     <span className="">Time: {reviews.time} {reviews.time >= 12 ? 'pm' : 'am'}</span>
-                    <span>{reviews?.email}</span>
-                    <p className='text-xl'>{reviews?.review}</p>
+                    <span>Email: {reviews?.email}</span>
+                    <p className='text-xl'>Review : {reviews?.review}</p>
                 </div>
                 <div>
                     <button onClick={()=>handleDelete(reviews._id)} className='btn m-5'>Delete</button>
