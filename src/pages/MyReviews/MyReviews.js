@@ -7,7 +7,7 @@ const MyReviews = () => {
     const [reviews,setReviews] = useState([])
     const [update,setUpdate] = useState()
     const [handleid,Sethandleid] = useState()
-    const {user,logOut,loading} = useContext(AuthContext);
+    const {user,logOut} = useContext(AuthContext);
     // title
     useTitle('My-Review')
     // MY Review api called
@@ -86,7 +86,7 @@ const MyReviews = () => {
                 <div className="card-body">
                     <h2 className="card-title">{reviews?.displayName}</h2>
                     <span className="">Date: {reviews.date}</span>
-                    <span className="">Time: {reviews.time} {reviews.time >= 12 ? 'pm' : 'am'}</span>
+                    <span className="">Time: {reviews.time}</span>
                     <span>Email: {reviews?.email}</span>
                     <p className='text-xl'>Meal Name: {reviews?.strMeal}</p>
                     <p className='text-xl'>Review : {reviews?.review}</p>
