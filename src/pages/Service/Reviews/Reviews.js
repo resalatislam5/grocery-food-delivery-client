@@ -7,17 +7,20 @@ const Reviews = ({id}) => {
     const [isShown, setIsShown] = useState(false);
     const [reviews,setReviews] = useState([])
     const {user,loading} = useContext(AuthContext)
+    //time 
     const current = new Date();
     var hours = new Date().getHours(); 
     var min = new Date().getMinutes();
     var sec = new Date().getSeconds();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
     const time = `${hours}:${min}:${sec}`;
+    // Reviews api called
     useEffect(() => {
         fetch(`https://gorcery-food-delivery-server.vercel.app/reviews/${id}`)
         .then(res => res.json())
         .then(data => setReviews(data))
     }, [id])
+    // set loading
     if(loading){
         return <button className="btn btn-square loading"></button>
     }

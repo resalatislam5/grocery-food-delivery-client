@@ -10,6 +10,7 @@ const MyReviews = () => {
     const {user,logOut} = useContext(AuthContext);
     // title
     useTitle('My-Review')
+    // MY Review api called
     useEffect(()=>{
         fetch(`https://gorcery-food-delivery-server-resalatislam5.vercel.app/myreviews?email=${user?.email}`,{
             headers:{
@@ -23,7 +24,7 @@ const MyReviews = () => {
            return res.json()
         })
         .then(data => setReviews(data))
-    },[])
+    },[user,logOut])
     //handle delete
     const handleDelete = id =>{
         fetch(`https://gorcery-food-delivery-server.vercel.app/reviewdelete/${id}`,{

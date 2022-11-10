@@ -47,7 +47,6 @@ export const routes = createBrowserRouter([
             },
             {
                 path:'/addservice',
-                // loader: () => fetch('https://gorcery-food-delivery-server.vercel.app/addservices'),
                 element: <PrivateRoutes><AddService /></PrivateRoutes>
             },
 

@@ -7,6 +7,7 @@ import useTitle from '../../hooks/useTitle';
 const AddService = () => {
     const [services,setServices] = useState([])
     const {user,logOut} = useContext(AuthContext)
+    // addService api called
     useEffect(()=>{
         fetch(`https://gorcery-food-delivery-server-resalatislam5.vercel.app/addservices?email=${user?.email}`,{
             headers:{
@@ -20,7 +21,7 @@ const AddService = () => {
            return res.json()
         })
         .then(data => setServices(data))
-    },[user])
+    },[user,logOut])
     // title
     useTitle('Orders')
     return (

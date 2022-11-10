@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 const HomeProducts = () => {
     const [products,setProducts] = useState([])
+    // Home Products api called
     useEffect(()=>{
         fetch('https://gorcery-food-delivery-server.vercel.app/homeproducts')
         .then(res => res.json())

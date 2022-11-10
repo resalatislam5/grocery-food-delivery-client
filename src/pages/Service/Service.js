@@ -11,10 +11,11 @@ const Service = () => {
     const {user} = useContext(AuthContext)
     // title
     useTitle('Services')
-
+    //handle orders
     const handleAdd = () =>{
         product[0].email = user?.email;
         console.log(product[0])
+        // addService api post called
         fetch('https://gorcery-food-delivery-server-resalatislam5.vercel.app/addservices',{
             method:'POST',
             headers:{

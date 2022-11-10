@@ -35,6 +35,7 @@ const AuthProvider = ({children}) => {
         setLoading(true)
         return signInWithPopup(auth, GoogleProvider)
     }
+    //OnAuthStateChange
     useEffect(()=>{
         const unSubscribe = onAuthStateChanged(auth, currentUser =>{
             console.log(currentUser)

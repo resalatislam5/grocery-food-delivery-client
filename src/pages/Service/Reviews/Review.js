@@ -14,7 +14,7 @@ const Review = ({reviews}) => {
                     <span className="">Date: {date}</span>
                     <span className="">Time: {time} {ampm}</span>
                     <span>{email}</span>
-                    <p className='text-xl'>{review}</p>
+                    <p className='text-xl'>Your review{review}</p>
                 </div>
             </div>
         </div>
