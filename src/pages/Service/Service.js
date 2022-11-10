@@ -45,7 +45,7 @@ const Service = () => {
                     </div>
                 </div>
             </div>
-            <Reviews id ={_id}/>
+            <Reviews id ={_id} strMeal={strMeal}/>
         </div>
     );
 };

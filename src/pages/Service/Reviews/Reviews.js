@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import Review from './Review';
 
-const Reviews = ({id}) => {
+const Reviews = ({id,strMeal}) => {
     const [isShown, setIsShown] = useState(false);
     const [reviews,setReviews] = useState([])
     const {user,loading} = useContext(AuthContext)
@@ -37,7 +37,8 @@ const Reviews = ({id}) => {
             displayName:user.displayName,
             email: user.email,
             date:date,
-            time:time
+            time:time,
+            strMeal:strMeal
         }
         fetch('https://gorcery-food-delivery-server.vercel.app/reviews',{
             method:'POST',
