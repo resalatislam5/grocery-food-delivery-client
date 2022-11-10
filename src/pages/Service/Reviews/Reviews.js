@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import Review from './Review';
@@ -52,6 +53,7 @@ const Reviews = ({id}) => {
                 const newReview = [...reviews,userReview]
                 setReviews(newReview)
                 e.target.reset()
+                toast.success('successfully review add')
             }
         })
       }
