@@ -85,6 +85,8 @@ const MyReviews = () => {
                     <div key={reviews._id} className="card  bg-base-100 shadow-xl my-5">
                 <div className="card-body">
                     <h2 className="card-title">{reviews?.displayName}</h2>
+                    <span className="">Date: {reviews.date}</span>
+                    <span className="">Time: {reviews.time} {reviews.time >= 12 ? 'pm' : 'am'}</span>
                     <span>{reviews?.email}</span>
                     <p className='text-xl'>{reviews?.review}</p>
                 </div>
