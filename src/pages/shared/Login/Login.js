@@ -36,7 +36,6 @@ const Login = () => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data.token);
                 localStorage.setItem('grocery-token', data.token)
             })
             toast.success('Login Successfully')
@@ -64,7 +63,6 @@ const Login = () => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data.token);
                 localStorage.setItem('grocery-token', data.token)
                 toast.success('Login successfully')
                 navigate(from, { replace: true });

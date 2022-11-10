@@ -22,7 +22,6 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
         const confirm = form.confirm.value;
-        console.log(name,password,confirm,email)
         //password check
         if(password !== confirm){
             return toast.error('password not match')
@@ -47,13 +46,12 @@ const SignUp = () => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data.token);
                 localStorage.setItem('grocery-token', data.token)
                 toast.success('Sign Up Successfully');
                 navigate(from, { replace: true });
             })
               }).catch((error) => {
-                console.log(error)
+                toast.error(error.message)
               });
 
         }).catch(error =>{
@@ -79,7 +77,6 @@ const SignUp = () => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data.token);
                 localStorage.setItem('grocery-token', data.token)
             })
             toast.success('Login successfully')

@@ -49,7 +49,6 @@ const MyReviews = () => {
     }
     //handle update
     const handleUpdate = (id) =>{
-        console.log(id)
         const updated = {
             update:update,
         }

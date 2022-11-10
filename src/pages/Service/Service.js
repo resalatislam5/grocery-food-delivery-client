@@ -14,7 +14,6 @@ const Service = () => {
     //handle orders
     const handleAdd = () =>{
         product[0].email = user?.email;
-        console.log(product[0])
         // addService api post called
         fetch('https://gorcery-food-delivery-server-resalatislam5.vercel.app/addservices',{
             method:'POST',
@@ -26,7 +25,6 @@ const Service = () => {
         .then(res => res.json())
         .then(data => {
             toast.success('meal add successfully')
-           console.log(data)
         })
       }
     return (

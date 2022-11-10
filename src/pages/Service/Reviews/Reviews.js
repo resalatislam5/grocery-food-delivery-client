@@ -51,7 +51,6 @@ const Reviews = ({id}) => {
                 userReview.insertedId = data.insertedId;
                 const newReview = [...reviews,userReview]
                 setReviews(newReview)
-                console.log(data)
                 e.target.reset()
             }
         })
