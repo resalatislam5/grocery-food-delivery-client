@@ -8,7 +8,7 @@ const ServicesCard = ({product}) => {
     return (
 
             <div className="">
-                <div className="card bg-white border w-96 p-3">
+                <div className="card bg-white border xl:w-96 w-80 p-3">
                     <div>
                         <PhotoProvider>
                             <PhotoView src={strMealThumb}>
