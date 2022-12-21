@@ -5,7 +5,7 @@ import { routes } from './Router/Routes/Routes';
 import 'react-photo-view/dist/react-photo-view.css';
 function App() {
   return (
-    <div className='max-w-[1920px] mx-auto '>
+    <div className='max-w-[1920px] mx-auto App'>
       <Toaster
             position="top-center"
             reverseOrder={false}

@@ -12,12 +12,12 @@ const HomeProducts = () => {
         .then(data => setProducts(data))
     },[])
     return (
-        <div className='mx-28 mt-48'>
-            <div className='grid grid-cols-3 gap-5'>
+        <div className='lg:mx-28 mx-5 lg:mt-48 mt-10'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 justify-items-center'>
             {
                 products.map(product => <div key={product._id}>
                     <div className="">
-                        <div className="card bg-white border w-96 p-3">
+                        <div className="card bg-white border lg:w-96 w-80 p-3">
                             <div>
                         <PhotoProvider>
                             <PhotoView src={product.strMealThumb}>

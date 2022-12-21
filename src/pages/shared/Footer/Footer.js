@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
 const Footer = () => {
     return (
-        <div className="px-28 py-10 bg-base-200">
+        <div className="lg:px-28 px-5 py-10 bg-base-200">
             <footer className="footer text-[#888888]">
             <div>
                 <div className='flex gap-2 items-center mb-2'>

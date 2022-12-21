@@ -10,7 +10,7 @@ const Services = () => {
     return (
         <div className='mx-28'>
             <h2 className='my-5 text-center text-3xl font-bold'>Total Meal Found: <span className='text-[#F86061]'>{products.length}</span></h2>
-            <div className='grid grid-cols-3 gap-5 my-14'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 my-14'>
                 {
                     products.map(product => <ServicesCard key={product._id} product={product} />)
                 }
