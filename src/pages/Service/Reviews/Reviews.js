@@ -51,7 +51,7 @@ const Reviews = ({id,strMeal}) => {
         .then(data => {
             if(data.acknowledged){
                 userReview.insertedId = data.insertedId;
-                const newReview = [...reviews,userReview]
+                const newReview = [userReview,...reviews]
                 setReviews(newReview)
                 e.target.reset()
                 toast.success('successfully review add')

@@ -66,7 +66,7 @@ const MyReviews = () => {
                     const newReview = reviews.find(review => review._id === id)
                     // const newReview = [...reviews,updated];
                     newReview.review = update;
-                     const  Updatereview = [...allReview, newReview]
+                     const  Updatereview = [newReview,...allReview]
                     setReviews(Updatereview)
                     toast.success('Update successfully')
                 }

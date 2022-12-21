@@ -15,7 +15,7 @@ const Header = () => {
         })
     }
     return (
-        <div className="navbar bg-base-100 px-28 py-7">
+        <div className="navbar bg-base-100 lg:px-28 px-5 py-7">
             <div className="navbar-start">
                 <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -35,7 +35,7 @@ const Header = () => {
                 }
                 </ul>
                 </div>
-                <Link to='/'><img src={logo} alt="" /></Link>
+                <Link to='/' className='lg:flex hidden'><img src={logo} alt="" /></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
